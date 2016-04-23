@@ -33,12 +33,21 @@
             $row = $rows[0];
 
             // compare hash of user's input against hash that's in database
-            //if (password_verify($_POST["password"], $row["hash"]) == $row["hash"])
 			if (password_verify($_POST["password"], $row["password"]))
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["username"] = $row["username"];
-				$_SESSION['manager'] = false;
+                //check whether the user is customer or admin
+                if (count(query("SELECT * FROM customer WHERE username = ?", $_POST["username"])) == 1) {
+                    $_SESSION['manager'] = false;
+                    $_SESSION["username"] = $row["username"];
+                } else if (count(query("SELECT * FROM manager WHERE username = ?", $_POST["username"])) == 1){
+                    $_SESSION['manager'] = true;
+                    $_SESSION["username"] = $row["username"];
+                } else {
+                    apologize("Invalid username and/or password.");
+                }
+
                 // redirect to portfolio
                 redirect("/");
             }
