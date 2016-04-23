@@ -3,9 +3,9 @@
 	require("../includes/config.php");
 	// if(isLogin()){
 		if($_SESSION['manager'])
-			include "mangerview.php";
+			render("../templates/manager_view.php", ["title" => "Admin View"]);
 		else
-			render("../templates/customer_view.php", ["title" => "Portfolio"]);
+			render("../templates/customer_view.php", ["title" => "Train Reservation"]);
 	// } else {
 	// 	include "login.php";
 	// }
