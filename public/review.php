@@ -14,7 +14,6 @@
                 "train_number" => $row["train_number"],
             ];
     	}
-    	//echo($cash[0]["cash"]);
     	// render portfolio
     	if(empty($train_numbers))
     		redirect("/");
@@ -25,8 +24,8 @@
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        query("INSERT INTO review (review_number, username, train_number, comment, rating) VALUES(?, ?, ?,?,?)",
-        1, $_SESSION["username"], $_POST["trainNum"], $_POST["comment"], $_POST["rating"]);
+        query("INSERT INTO review(username, train_number, comment, rating) VALUES(?,?,?,?)",
+        $_SESSION["username"], $_POST["trainNum"], $_POST["comment"], $_POST["rating"]);
         redirect("/");
     }
 
