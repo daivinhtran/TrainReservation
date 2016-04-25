@@ -10,7 +10,7 @@
         if (count($cards) > 0) {
             render("payment_info_form.php", ["cards" => $cards, "title" => "Add extra"]);
         } else {
-            render("payment_info_form.php", ["cards" => [[]], "title" => "Add extra"]);
+            render("payment_info_form.php", ["cards" => [], "title" => "Add extra"]);
         }
 
     }

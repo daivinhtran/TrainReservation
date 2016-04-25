@@ -38,9 +38,11 @@ Delete Card
     <fieldset>
         <div class="form-group">
             <select class="form-control" name = "card_number_delete" required>
+            <?php if (count($cards) > 0) : ?>
             <?php foreach($cards as $card): ?>
               <option><?= $card["card_number"] ?></option>
             <?php endforeach ?>
+            <?php endif; ?>
             </select>
         </div>
         <div class="form-group">
