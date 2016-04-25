@@ -70,10 +70,12 @@
                                                    "title" => "Train Schedule",
                                                    "departure_date" => $_POST["departure_date"],
                                                     "depart" => $_POST["depart_station"]]);
+            } else {
+                apologize("The selected route is not availble");
             }
+        } else {
+            apologize("The selected route is not availble");
         }
-        apologize("The selected route is not availble");
-
     }
 
 ?>

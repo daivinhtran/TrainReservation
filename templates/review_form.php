@@ -20,9 +20,11 @@
         </div>
         <div class="form-group">
             <select class="form-control" id="rating" name = "rating">
-              <option>Good</option>
-              <option>Neutral</option>
-              <option>Bad</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
             </select>
         </div>
         <div class="form-group">

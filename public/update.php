@@ -28,8 +28,14 @@
                                 $reservationid,
                                 $train_number);
             $reserve = $reserve[0];
-            render("update_form.php", ["reserve" => $reserve,
-                                        "title" => "Update Reservation"]);
+            $today = date("Y-m-d H:i:s");
+            $ticket_date = $reserve["departure_date"]." 00:00:00";
+            if ($ticket_date < $today) {
+                apologize("It's too late to update the ticket");
+            } else {
+                render("update_form.php", ["reserve" => $reserve,
+                                            "title" => "Update Reservation"]);
+            }
         }
 
     }

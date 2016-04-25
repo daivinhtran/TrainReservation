@@ -37,6 +37,9 @@
 		    </tr>
 	</tbody>
     </table>
+    Change Fee: <?= $change ?> <br>
+    Updated Total Cost: <?= $updated_total_cost ?>
+
 <div>
     or <a href="index.php">Back</a>
 </div>
