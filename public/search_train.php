@@ -43,10 +43,12 @@
                         ) AND (station_name = ? OR station_name = ?)
                         ORDER BY train_number, arrival_time",
                         $depart, $arrival, $depart, $arrival);
-        if (count($rows) > 0) {
+        if (count($rows) > 1) {
+            $available = false;
             for ($i = 0; $i < count($rows); $i = $i + 2) {
                 if ($rows[$i]["station_name"] == $depart
                     && $rows[$i + 1]["station_name"] == $arrival) {
+                        $available = true;
                         $prices = query("SELECT *
                                         FROM train_route WHERE train_number = ?",
                                         $rows[$i]["train_number"]);
@@ -63,18 +65,15 @@
                         ];
                     }
             }
-        } else {
-            $routes = [["train_number" => "N/A",
-                    "depart_time" => "N/A",
-                    "arrival_time" => "N/A",
-                    "duration" => "N/A",
-                    "first_price" => "N/A",
-                    "second_price" => "N/A"]];
+            if ($available) {
+                render("select_price_form.php", ["routes" => $routes,
+                                                   "title" => "Train Schedule",
+                                                   "departure_date" => $_POST["departure_date"],
+                                                    "depart" => $_POST["depart_station"]]);
+            }
         }
-        render("select_price_form.php", ["routes" => $routes,
-                                           "title" => "Train Schedule",
-                                           "departure_date" => $_POST["departure_date"],
-                                            "depart" => $_POST["depart_station"]]);
+        apologize("The selected route is not availble");
+
     }
 
 ?>
