@@ -47,6 +47,8 @@
                 } else {
                     apologize("Invalid username and/or password.");
                 }
+                $_SESSION["cart"] = array();
+                $_SESSION["total_cost"] = 0;
 
                 // redirect to portfolio
                 redirect("/");

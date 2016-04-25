@@ -22,7 +22,7 @@
     // define("USERNAME", "cs4400_Team_30");
 
     // your database's name
-    define("DATABASE", "trainSystem");
+    define("DATABASE", "TrainSystem_v02");
 
     // your database's password
     define("PASSWORD", "root");
