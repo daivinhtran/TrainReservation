@@ -58,6 +58,18 @@
         <button type="submit" class="btn btn-primary">Buy</button>
     </form>
     <a href="payment_info.php">Add Card</a>
+    <br>
+    Remove from Cart Item:
+    <form action="remove_from_cart.php" method="post">
+        <div class="form-group">
+            <select class="form-control" id="item_to_remove" name = "id_to_remove" required>
+            <?php for($i = 0; $i < count($_SESSION["cart"]); $i++): ?>
+              <option><?= $i ?></option>
+            <?php endfor; ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Remove</button>
+    </form>
 <div>
     or <a href="search_train.php">Continue adding a train</a>
 </div>

@@ -89,7 +89,7 @@
         }
 
         $cards = query("SELECT card_number FROM payment_info WHERE username = ?", $_SESSION["username"]);
-    	render("cart_form.php", ["cards" => $cards, "is_student" => true, "total_cost" => $total_cost, "title" => "Cart"]);
+    	render("cart_form.php", ["cards" => $cards, "is_student" => $is_student, "total_cost" => $total_cost, "title" => "Cart"]);
     }
 
 ?>
